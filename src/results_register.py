@@ -11,7 +11,7 @@ question, which code version produced it, or whether it has actually
 cleared output checking yet.
 
 This module keeps a single CSV register (`docs/results_register.csv`,
-tracked in git — it holds only metadata, never data) that notebooks
+tracked in git  Eit holds only metadata, never data) that notebooks
 append to whenever they produce something worth keeping. At the end of
 the PhD, `compile_register()` (see `scripts/compile_results.py`) turns
 every *cleared* entry into a single compiled document.
@@ -24,7 +24,7 @@ Typical use from a notebook
     log_output(
         output_id="fig_income_trend_by_year",
         source="notebooks/07_longitudinal.ipynb",
-        research_question="RQ2 — entrepreneurial engagement and income",
+        research_question="RQ2  Eentrepreneurial engagement and income",
         description="Mean income by year, by chronic condition status",
         file_path="outputs/figures/income_trend.png",
         status="draft",  # "draft" | "pending_check" | "cleared" | "superseded"
@@ -56,7 +56,7 @@ VALID_STATUSES = {"draft", "pending_check", "cleared", "superseded"}
 def _ensure_register_exists(path: Path = REGISTER_PATH) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if not path.exists():
-        with open(path, "w", newline="") as f:
+        with open(path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=FIELDS)
             writer.writeheader()
 
@@ -70,14 +70,14 @@ def log_output(output_id: str, source: str, research_question: str,
     ----------
     output_id : str
         A short, stable, human-chosen identifier, e.g. "fig_income_trend".
-        Reused output_ids are treated as new versions — see
+        Reused output_ids are treated as new versions  Esee
         `supersede_output()` to mark the old one superseded first.
     source : str
         The notebook or script that produced this output, e.g.
         "notebooks/07_longitudinal.ipynb". Helps you find the code again.
     research_question : str
         Which research question / aim this speaks to (see
-        docs/research_questions.md) — keeps every output traceable back
+        docs/research_questions.md)  Ekeeps every output traceable back
         to why it exists.
     description : str
         One human-readable line describing the output.
@@ -98,7 +98,7 @@ def log_output(output_id: str, source: str, research_question: str,
         raise ValueError(f"status must be one of {sorted(VALID_STATUSES)}, got {status!r}")
 
     _ensure_register_exists(register_path)
-    with open(register_path, "a", newline="") as f:
+    with open(register_path, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=FIELDS)
         writer.writerow({
             "output_id": output_id,
@@ -116,7 +116,7 @@ def read_register(register_path: Path = REGISTER_PATH) -> list:
     """Return the register as a list of dicts (empty list if none logged yet)."""
     if not register_path.exists():
         return []
-    with open(register_path, "r", newline="") as f:
+    with open(register_path, "r", newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
@@ -143,7 +143,7 @@ def mark_status(output_id: str, new_status: str,
         return 0
     rows[matches[-1]]["status"] = new_status
 
-    with open(register_path, "w", newline="") as f:
+    with open(register_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=FIELDS)
         writer.writeheader()
         writer.writerows(rows)

@@ -21,6 +21,6 @@ def load_config(path: Path = CONFIG_PATH) -> dict:
         Path to the YAML config file. Defaults to config/research_config.yaml
         at the repository root.
     """
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
     return config
