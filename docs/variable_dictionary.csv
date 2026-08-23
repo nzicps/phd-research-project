@@ -1,0 +1,10 @@
+research_construct,variable_name,idi_lbd_dataset,stats_nz_variable,unit,time_period,type,definition,transformation,missing_values,limitations,analysis_use
+Chronic health condition,chronic_condition,TBC,TBC,person-year,TBC,exposure,"Presence of one or more chronic conditions in a given year",TBC,TBC,TBC,propensity score / regression
+Employment status,employment,TBC,TBC,person-year,TBC,covariate/outcome,"Whether the person is employed in a given year",TBC,TBC,TBC,longitudinal / regression
+Self-employment flag,self_employed,TBC,TBC,person-year,TBC,exposure,"Whether the person is self-employed in a given year",TBC,TBC,TBC,propensity score / regression
+Business identifier,business_id,LBD,TBC,business,TBC,linkage,"Identifier linking person to an owned/operated business",TBC,TBC,TBC,cohort construction
+Income,income,TBC,TBC,person-year,TBC,outcome,"Annual income from employment or self-employment",TBC,TBC,TBC,regression / causal
+Age,age,TBC,TBC,person,TBC,covariate,"Age of person at start of observation year",TBC,TBC,TBC,propensity score
+Sex,sex,TBC,TBC,person,TBC,covariate,"Recorded sex of person",TBC,TBC,TBC,propensity score
+Education,education,TBC,TBC,person,TBC,covariate,"Highest recorded qualification",TBC,TBC,TBC,propensity score
+Business survival,business_survival_years,LBD,TBC,business,TBC,outcome,"Number of years business remains active from entry",TBC,TBC,TBC,survival analysis

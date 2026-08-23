@@ -1,0 +1,48 @@
+# =========================================================
+# Research configuration
+# Central place for paths and parameters so notebooks/src
+# don't hard-code values. Edit this file, not the code.
+# =========================================================
+
+project:
+  name: "Developing an Integrated Framework for Evaluating Health and Entrepreneurship Outcomes for Individuals with Chronic Health Conditions in Aotearoa New Zealand"
+  researcher: "Osman Hassan Osman"
+  department: "Social Sciences, Faculty of Arts and Education"
+  institution: "University of Auckland"
+  supervisors: ["Professor Barry Milne"]
+
+data:
+  # "synthetic" while developing locally; "idi" only inside the
+  # approved Stats NZ / UoA secure environment.
+  default_source: "synthetic"
+  synthetic_path: "data/synthetic/synthetic_idi_lbd.csv"
+  processed_path: "data/processed/"
+
+cohort:
+  start_year: 2015
+  end_year: 2023
+  min_age: 18
+  max_age: 70
+
+variables:
+  health_exposure: "chronic_condition"      # placeholder — confirm in decisions_log.md
+  employment_status: "employment"
+  self_employment_flag: "self_employed"
+  business_id: "business_id"
+  income: "income"
+
+propensity_score:
+  covariates:
+    - "age"
+    - "sex"
+    - "education"
+    - "prior_employment"
+    - "prior_income"
+  matching_method: "nearest_neighbour"      # or "weighting"
+  caliper: 0.2                              # in SDs of logit(propensity) — see src/causal.py
+  caliper_scale: "logit_sd"                 # "logit_sd" (recommended) or "probability"
+
+output:
+  figures_dir: "outputs/figures/"
+  tables_dir: "outputs/tables/"
+  random_seed: 42

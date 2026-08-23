@@ -1,0 +1,76 @@
+# =========================================================
+# CONFIDENTIAL / RESTRICTED DATA — NEVER COMMIT
+# =========================================================
+data/
+*.csv
+*.parquet
+*.dta
+*.sav
+*.xlsx
+*.xls
+
+# Explicit, deliberate exceptions (no real/confidential data in these):
+!docs/variable_dictionary.csv
+!docs/results_register.csv
+
+# Credentials / secrets
+.env
+.env.*
+credentials/
+secrets/
+*.key
+*.pem
+
+# =========================================================
+# Jupyter
+# =========================================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# =========================================================
+# Python
+# =========================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# =========================================================
+# Environments
+# =========================================================
+.venv/
+venv/
+env/
+.conda/
+
+# =========================================================
+# Testing / coverage
+# =========================================================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =========================================================
+# OS / editor cruft
+# =========================================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================================================
+# Outputs that may contain unreviewed / unconfidentialised results
+# Keep folder structure but ignore generated content
+# =========================================================
+outputs/figures/*
+!outputs/figures/.gitkeep
+outputs/tables/*
+!outputs/tables/.gitkeep
+
+# outputs/cleared/ is DELIBERATELY NOT ignored — only move a file there
+# once it has passed Stats NZ output checking (or, for synthetic-data
+# work, once you're confident it's fine to keep in version history).
+# See docs/results_register.md and scripts/compile_results.py.

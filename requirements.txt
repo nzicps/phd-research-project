@@ -1,0 +1,15 @@
+jupyterlab
+pandas
+numpy
+scipy
+statsmodels
+scikit-learn
+matplotlib
+seaborn
+duckdb
+pyarrow
+linearmodels
+lifelines
+openpyxl
+pytest
+pyyaml
