@@ -74,3 +74,6 @@ outputs/tables/*
 # once it has passed Stats NZ output checking (or, for synthetic-data
 # work, once you're confident it's fine to keep in version history).
 # See docs/results_register.md and scripts/compile_results.py.
+webapp/db.sqlite3
+webapp/**/__pycache__/
+webapp/*.pyc
